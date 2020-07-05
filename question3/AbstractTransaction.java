@@ -26,4 +26,11 @@ public abstract class AbstractTransaction{
         }
     }
     
+    public Cotisant getCotisant()
+    {
+        return this.cotisant;
+    }
+    
+   
+    
 }

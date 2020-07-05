@@ -1,3 +1,4 @@
+
 package question1;
 
 import java.util.Iterator;
@@ -7,47 +8,77 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant>{
+public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant>, Cloneable{
   private List<Cotisant> liste;
   
   public GroupeDeContributeurs(String nomDuGroupe){
     super(nomDuGroupe);
-    // a completer
+    this.liste =  new ArrayList<Cotisant>();
   }
   
   public void ajouter(Cotisant cotisant){
-    // a completer
+    this.liste.add(cotisant);
+    cotisant.setParent(this);
   }
   
   
   public int nombreDeCotisants(){
     int nombre = 0;
-    // a completer
+    
+    for(Cotisant c :  liste)
+    {
+        nombre += c.nombreDeCotisants();
+    }
+    
     return nombre;
   }
   
   public String toString(){
     String str = new String();
-    // a completer
+    
+    Iterator<Cotisant> it =  iterator();
+    while (it.hasNext())
+    {
+        Cotisant c =  it.next();
+        str += c.toString();
+    }
     return str;
   }
   
   public List<Cotisant> getChildren(){
-    return null;// a completer
+    return liste;
   }
   
   public void debit(int somme) throws SoldeDebiteurException{
-    // a completer
+      if(somme > solde()) throw new SoldeDebiteurException("Impossible de débiter cette somme");
+        if(somme < 0) throw new RuntimeException("Inférieur à  0!!");
+      
+       for(Cotisant c : liste)
+       {
+           c.debit(somme);
+        }
+        
   }
   
   public void credit(int somme){
-    // a completer
-  }
+      if(somme < 0) throw new RuntimeException("Inférieur à  0!!");
+      
+       for(Cotisant c : liste)
+       {
+           c.credit(somme);
+        }
+    }
   
   public int solde(){
     int solde = 0;
-    // a completer
+    
+    for(Cotisant c : liste)
+    {
+        solde += c.solde();
+    }
+    
     return solde;
+    
   }
   
   // mÃ©thodes fournies

@@ -29,6 +29,14 @@ public class Main {
         }else{
             System.out.println("Composite invalide"); 
         }
+      
+
+        
+        
+        
+       
+        
+        
     }
 
     /** Retourne dans une String, un arbre en XML, utilisée en question4. */

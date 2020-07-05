@@ -18,7 +18,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             c.debit(val);
         }catch(Exception e){
             fail(" aucune exception n'est attendue ici !");
-        }	
+        }   
         assertTrue(" débit inopérant ??? ", c.solde()==100-val);
         c.credit(val);
         assertTrue(" crédit inopérant??? ", c.solde()==100);
@@ -33,7 +33,7 @@ public class TestsCotisant extends junit.framework.TestCase{
         GroupeDeContributeurs g = new GroupeDeContributeurs("g");
         g.ajouter(new Contributeur("a",100));
         g.ajouter(new Contributeur("b",50));
-        g.ajouter(new Contributeur("c",150));	    
+        g.ajouter(new Contributeur("c",150));       
         assertEquals(" nombre de Contributeurs ??? ", 3, g.nombreDeCotisants());
 
         assertEquals(" solde erroné ??? ", 300, g.solde());
@@ -77,7 +77,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             it.next();
         }catch(Exception ex){
             assertTrue( ex instanceof NoSuchElementException);
-        }	    
+        }       
     }
 
     public void testValeurNegative(){
@@ -125,7 +125,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             it.next();
         }catch(Exception ex){
             assertTrue(" NoSuchElementException est attendu ??? ", ex instanceof NoSuchElementException);
-        }	    
+        }       
 
     }
 
@@ -240,9 +240,9 @@ public class TestsCotisant extends junit.framework.TestCase{
             assertTrue(" getParent en échec ??? ", g2.getParent() == null);
             assertTrue(" getParent en échec ??? ", b.getParent() != null);
             assertTrue(" parent incorrect ??? ", b.getParent().nom().equals(g2.nom()));
-            // 	    g2.ajouter(g0);
-            // 	    assertTrue(" parent incorrect ??? ", g0.getParent().nom().equals(g2.nom()));
-
+            //      g2.ajouter(g0);
+            //      assertTrue(" parent incorrect ??? ", g0.getParent().nom().equals(g2.nom()));
+            
         }catch(Exception e){
             fail("exception inattendue !!! " + e.getMessage());
         }
@@ -269,7 +269,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             // pour ce test, les comptes des  Contributeurs sont intacts
             assertTrue(" à la question3 seulement l'atomicité est souhaitée ", a.solde()==100);
             assertTrue(" à la question3 seulement l'atomicité est souhaitée ", b.solde()==200);
-            assertTrue(" à la question3 seulement l'atomicité est souhaitée ", c.solde()==300);	    
+            assertTrue(" à la question3 seulement l'atomicité est souhaitée ", c.solde()==300);     
             assertTrue(" solde erroné ??? ", g.solde()==600);
 
         }catch(Exception e){
@@ -298,7 +298,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             // pour ce test, les comptes des  Contributeurs b & c ont été débités, et le débit a échoué
             assertTrue(" à la question3 seulement l'atomicité est souhaitée ", a.solde()==180);
             assertTrue(" à la question3 seulement l'atomicité est souhaitée ", b.solde()==80);
-            assertTrue(" à la question3 seulement l'atomicité est souhaitée ", c.solde()==100);	    
+            assertTrue(" à la question3 seulement l'atomicité est souhaitée ", c.solde()==100);     
             assertTrue(" solde erroné ??? ", g.solde()==(180+80+100));
 
         }catch(Exception e){
@@ -393,7 +393,7 @@ public class TestsCotisant extends junit.framework.TestCase{
             assertTrue(" est-ce le bon Cotisant ?, un GroupeDeContributeurs est attendu !", it.next() instanceof GroupeDeContributeurs);     // g11
             assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);
             assertTrue(" est-ce le bon Cotisant ?, un GroupeDeContributeurs est attendu !", it.next() instanceof GroupeDeContributeurs);     // g2
-            assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);	    
+            assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);      
             assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);
             assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);
             assertTrue(" est-ce le bon Cotisant ?, un Contributeur est attendu !", it.next() instanceof Contributeur);
@@ -402,7 +402,7 @@ public class TestsCotisant extends junit.framework.TestCase{
                 it.next();
             }catch(Exception ex){
                 assertTrue(" NoSuchElementException est attendu ??? ", ex instanceof NoSuchElementException);
-            }	   
+            }      
         }catch(Exception e){
             fail("exception inattendue !!! " + e.getMessage());
         }
@@ -439,7 +439,7 @@ public class TestsCotisant extends junit.framework.TestCase{
                 it.next();
             }catch(Exception ex){
                 assertTrue(" NoSuchElementException est attendu ??? ", ex instanceof NoSuchElementException);
-            }	   
+            }      
         }catch(Exception e){
             fail("exception inattendue !!! " + e.getMessage());
         }
