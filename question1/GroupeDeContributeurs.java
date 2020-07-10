@@ -17,12 +17,14 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
   }
   
   public void ajouter(Cotisant cotisant){
+      if(cotisant == null) return ;
     this.liste.add(cotisant);
     cotisant.setParent(this);
   }
   
   
   public int nombreDeCotisants(){
+      if(liste == null) return 0;
     int nombre = 0;
     
     for(Cotisant c :  liste)
@@ -46,10 +48,12 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
   }
   
   public List<Cotisant> getChildren(){
+     
     return liste;
   }
   
   public void debit(int somme) throws SoldeDebiteurException{
+      if(liste ==null) return ;
       if(somme > solde()) throw new SoldeDebiteurException("Impossible de débiter cette somme");
         if(somme < 0) throw new RuntimeException("Inférieur à  0!!");
       
@@ -61,6 +65,7 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
   }
   
   public void credit(int somme){
+      if(liste == null) return;
       if(somme < 0) throw new RuntimeException("Inférieur à  0!!");
       
        for(Cotisant c : liste)
@@ -70,6 +75,7 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
     }
   
   public int solde(){
+      if(liste == null) return 0;
     int solde = 0;
     
     for(Cotisant c : liste)

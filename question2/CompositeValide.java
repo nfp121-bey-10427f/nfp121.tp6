@@ -13,7 +13,7 @@ public class CompositeValide implements Visiteur<Boolean>{
   }
   
   public Boolean visite(GroupeDeContributeurs g){
-    
+      
       return g.solde()>=0 && g.nombreDeCotisants()>0;
       
   }

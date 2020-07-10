@@ -17,15 +17,7 @@
         
          int res = 0;
           Cotisant c = g.getChildren().get(0);
-          if(c instanceof GroupeDeContributeurs)
-            {
-                GroupeDeContributeurs gg = (GroupeDeContributeurs) c;
-                res = visite(gg);
-            }
-            else
-            {
-                res = c.solde();
-            }
+         
             
             for(Cotisant cc :  g.getChildren())
             {
@@ -39,8 +31,7 @@
                      if(cc.solde() <res) res = cc.solde();
                     }
                 
-                
-               
+ 
                 
                   
             }

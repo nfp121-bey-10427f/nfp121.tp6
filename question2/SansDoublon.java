@@ -15,10 +15,12 @@ public class SansDoublon implements Visiteur<Boolean>{
       for(Cotisant c : g.getChildren())
       {
           String nom = c.nom();
-          if(nom.equals(c.getParent().nom())) return false;
+          if(c.getParent() != null)
+            if(nom.equals(c.getParent().nom())) return false;
           for(Cotisant c2 : g.getChildren())
           {
               if((!(c2 ==c) && (c2.nom().equals(nom)))) return false;
+              if(c2.getParent() != null)
               if (c2.nom().equals(c2.getParent().nom())) return false;
               
             }
